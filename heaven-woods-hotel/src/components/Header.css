@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #2c5530;
+  color: white;
+}
+
+.logo h2 {
+  margin: 0;
+  color: #d4af37;
+}
+
+.logo span {
+  font-size: 0.8rem;
+  color: #f8f9fa;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #d4af37;
+}
+
+.cta-button {
+  background: #d4af37;
+  color: #2c5530 !important;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  background: #b8941f;
+}

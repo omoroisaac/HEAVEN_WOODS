@@ -1,27 +1,24 @@
-// pages/Contact.js
 import React, { useState } from 'react';
-import { ContactForm, ContactInfo, Map } from '../components';
+import './Contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    subject: '',
     message: ''
   });
 
-  const hotelInfo = {
-    address: "Plot 123, Gulu City, Northern Uganda",
-    phone: "+256 123 456 789",
-    email: "info@heavenwoods.com",
-    coordinates: { lat: 2.7746, lng: 32.2980 } // Gulu coordinates
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for your message! We will get back to you soon.');
+    setFormData({ name: '', email: '', message: '' });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Contact form submitted:', formData);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -32,23 +29,61 @@ const Contact = () => {
       </div>
 
       <div className="contact-content">
-        <div className="contact-form-section">
-          <ContactForm 
-            formData={formData}
-            onChange={setFormData}
-            onSubmit={handleSubmit}
-          />
+        <div className="contact-info">
+          <h2>Our Information</h2>
+          <div className="info-item">
+            <h3>Address</h3>
+            <p>Plot 123, Gulu City<br />Northern Uganda</p>
+          </div>
+          <div className="info-item">
+            <h3>Phone</h3>
+            <p>+256 123 456 789</p>
+          </div>
+          <div className="info-item">
+            <h3>Email</h3>
+            <p>info@heavenwoods.com</p>
+          </div>
         </div>
 
-        <div className="contact-info-section">
-          <ContactInfo {...hotelInfo} />
-          <Map 
-            coordinates={hotelInfo.coordinates}
-            zoom={15}
-            markerTitle="Heaven Woods Hotel"
-          />
+        <div className="contact-form">
+          <h2>Send us a Message</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="submit-button">Send Message</button>
+          </form>
         </div>
       </div>
     </div>
   );
 };
+
+export default Contact;

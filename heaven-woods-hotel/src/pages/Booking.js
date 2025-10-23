@@ -1,166 +1,146 @@
-// pages/Booking.js
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookingForm, BookingSummary, PaymentSection } from '../components';
-import { BookingContainer, BookingGrid, LoadingSpinner } from './Booking.styles';
+import './Booking.css';
 
 const Booking = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [availableRooms, setAvailableRooms] = useState([]);
-  
   const [bookingData, setBookingData] = useState({
-    // Step 1: Dates & Guests
     checkIn: '',
     checkOut: '',
     adults: 1,
     children: 0,
-    roomType: '',
-    
-    // Step 2: Guest Information
-    guestInfo: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      country: 'Uganda',
-      specialRequests: ''
-    },
-    
-    // Step 3: Payment
-    payment: {
-      method: 'credit-card',
-      cardNumber: '',
-      expiryDate: '',
-      cvv: '',
-      nameOnCard: ''
-    }
+    roomType: 'standard',
+    name: '',
+    email: '',
+    phone: ''
   });
 
-  // Check room availability when dates change
-  useEffect(() => {
-    if (bookingData.checkIn && bookingData.checkOut) {
-      checkAvailability();
-    }
-  }, [bookingData.checkIn, bookingData.checkOut]);
-
-  const checkAvailability = async () => {
-    setLoading(true);
-    try {
-      // Simulate API call
-      const response = await fetch('/api/rooms/availability', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          checkIn: bookingData.checkIn,
-          checkOut: bookingData.checkOut,
-          guests: bookingData.adults + bookingData.children
-        })
-      });
-      
-      const available = await response.json();
-      setAvailableRooms(available);
-    } catch (error) {
-      console.error('Error checking availability:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleBookingSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    
-    try {
-      // Simulate booking submission
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(bookingData)
-      });
-      
-      if (response.ok) {
-        const result = await response.json();
-        navigate('/booking-confirmation', { 
-          state: { bookingId: result.bookingId, bookingData }
-        });
-      }
-    } catch (error) {
-      console.error('Booking failed:', error);
-    } finally {
-      setLoading(false);
-    }
+    alert('Booking submitted successfully! We will confirm your reservation shortly.');
+    navigate('/');
   };
 
-  const calculateTotal = () => {
-    const selectedRoom = availableRooms.find(room => room.type === bookingData.roomType);
-    if (!selectedRoom) return 0;
-    
-    const nights = Math.ceil(
-      (new Date(bookingData.checkOut) - new Date(bookingData.checkIn)) / (1000 * 60 * 60 * 24)
-    );
-    
-    return selectedRoom.price * nights;
+  const handleChange = (e) => {
+    setBookingData({
+      ...bookingData,
+      [e.target.name]: e.target.value
+    });
   };
-
-  const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
-
-  if (loading) return <LoadingSpinner>Processing...</LoadingSpinner>;
 
   return (
-    <BookingContainer>
+    <div className="booking-page">
       <div className="booking-header">
         <h1>Book Your Stay</h1>
-        <div className="step-indicator">
-          <span className={step >= 1 ? 'active' : ''}>1. Dates & Room</span>
-          <span className={step >= 2 ? 'active' : ''}>2. Guest Info</span>
-          <span className={step >= 3 ? 'active' : ''}>3. Payment</span>
-        </div>
+        <p>Reserve your perfect room at Heaven Woods</p>
       </div>
 
-      <BookingGrid>
-        <div className="booking-form-section">
-          <form onSubmit={handleBookingSubmit}>
-            {step === 1 && (
-              <BookingForm 
-                bookingData={bookingData}
-                availableRooms={availableRooms}
-                onDataChange={setBookingData}
-                onNext={nextStep}
+      <form onSubmit={handleSubmit} className="booking-form">
+        <div className="form-section">
+          <h2>Booking Details</h2>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Check-in Date</label>
+              <input
+                type="date"
+                name="checkIn"
+                value={bookingData.checkIn}
+                onChange={handleChange}
+                required
               />
-            )}
-            
-            {step === 2 && (
-              <GuestInfoForm 
-                guestInfo={bookingData.guestInfo}
-                onDataChange={(guestInfo) => setBookingData(prev => ({...prev, guestInfo}))}
-                onNext={nextStep}
-                onBack={prevStep}
+            </div>
+            <div className="form-group">
+              <label>Check-out Date</label>
+              <input
+                type="date"
+                name="checkOut"
+                value={bookingData.checkOut}
+                onChange={handleChange}
+                required
               />
-            )}
-            
-            {step === 3 && (
-              <PaymentSection 
-                payment={bookingData.payment}
-                onDataChange={(payment) => setBookingData(prev => ({...prev, payment}))}
-                onBack={prevStep}
-                onSubmit={handleBookingSubmit}
-              />
-            )}
-          </form>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label>Adults</label>
+              <select
+                name="adults"
+                value={bookingData.adults}
+                onChange={handleChange}
+              >
+                {[1, 2, 3, 4].map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Children</label>
+              <select
+                name="children"
+                value={bookingData.children}
+                onChange={handleChange}
+              >
+                {[0, 1, 2, 3].map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Room Type</label>
+            <select
+              name="roomType"
+              value={bookingData.roomType}
+              onChange={handleChange}
+            >
+              <option value="standard">Standard Room - $80/night</option>
+              <option value="deluxe">Deluxe Room - $120/night</option>
+              <option value="suite">Executive Suite - $200/night</option>
+            </select>
+          </div>
         </div>
 
-        <div className="booking-summary-section">
-          <BookingSummary 
-            bookingData={bookingData}
-            total={calculateTotal()}
-            availableRooms={availableRooms}
-          />
+        <div className="form-section">
+          <h2>Guest Information</h2>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input
+              type="text"
+              name="name"
+              value={bookingData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={bookingData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>Phone</label>
+              <input
+                type="tel"
+                name="phone"
+                value={bookingData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
         </div>
-      </BookingGrid>
-    </BookingContainer>
+
+        <button type="submit" className="submit-booking">Complete Booking</button>
+      </form>
+    </div>
   );
 };
 

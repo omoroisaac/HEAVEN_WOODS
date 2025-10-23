@@ -1,77 +1,31 @@
-// pages/Rooms.js
-import React, { useState, useMemo } from 'react';
-import { RoomCard, RoomFilter } from '../components';
-import { RoomGrid, FilterContainer, ResultsInfo } from './Rooms.styles';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Rooms.css';
 
 const Rooms = () => {
-  const [filters, setFilters] = useState({
-    priceRange: [0, 500],
-    amenities: [],
-    roomType: 'all'
-  });
-
-  const [rooms] = useState([
+  const rooms = [
     {
       id: 1,
       name: "Standard Room",
-      type: "standard",
       price: 80,
-      image: "/images/standard-room.jpg",
-      amenities: ["Free WiFi", "Air Conditioning", "Flat-screen TV", "En-suite Bathroom"],
-      description: "Comfortable and affordable accommodation with all essential amenities",
-      size: "25 m²",
-      capacity: "2 Adults",
-      available: true
+      description: "Comfortable and affordable accommodation",
+      amenities: ["Free WiFi", "Air Conditioning", "TV"]
     },
     {
       id: 2,
       name: "Deluxe Room",
-      type: "deluxe",
       price: 120,
-      image: "/images/deluxe-room.jpg",
-      amenities: ["Free WiFi", "Air Conditioning", "Smart TV", "Mini Bar", "Balcony"],
-      description: "Spacious room with modern amenities and beautiful views",
-      size: "35 m²",
-      capacity: "2 Adults, 1 Child",
-      available: true
+      description: "Spacious room with modern amenities",
+      amenities: ["Free WiFi", "Air Conditioning", "TV", "Mini Bar"]
     },
     {
       id: 3,
       name: "Executive Suite",
-      type: "suite",
       price: 200,
-      image: "/images/executive-suite.jpg",
-      amenities: ["Free WiFi", "Air Conditioning", "Smart TV", "Mini Bar", "Jacuzzi", "Living Area"],
-      description: "Luxurious suite with separate living area and premium amenities",
-      size: "55 m²",
-      capacity: "3 Adults",
-      available: true
-    },
-    {
-      id: 4,
-      name: "Family Suite",
-      type: "suite",
-      price: 180,
-      image: "/images/family-suite.jpg",
-      amenities: ["Free WiFi", "Air Conditioning", "Smart TV", "Mini Bar", "Two Bedrooms", "Kitchenette"],
-      description: "Perfect for families with connected rooms and extra space",
-      size: "60 m²",
-      capacity: "4 Adults, 2 Children",
-      available: true
+      description: "Luxurious suite with premium amenities",
+      amenities: ["Free WiFi", "Air Conditioning", "TV", "Mini Bar", "Jacuzzi"]
     }
-  ]);
-
-  const filteredRooms = useMemo(() => {
-    return rooms.filter(room => {
-      const inPriceRange = room.price >= filters.priceRange[0] && room.price <= filters.priceRange[1];
-      const matchesType = filters.roomType === 'all' || room.type === filters.roomType;
-      
-      const hasAmenities = filters.amenities.length === 0 || 
-        filters.amenities.every(amenity => room.amenities.includes(amenity));
-      
-      return inPriceRange && matchesType && hasAmenities && room.available;
-    });
-  }, [rooms, filters]);
+  ];
 
   return (
     <div className="rooms-page">
@@ -80,26 +34,29 @@ const Rooms = () => {
         <p>Choose from our selection of beautifully appointed accommodations</p>
       </div>
 
-      <FilterContainer>
-        <RoomFilter filters={filters} onFilterChange={setFilters} />
-      </FilterContainer>
-
-      <ResultsInfo>
-        <p>Showing {filteredRooms.length} of {rooms.length} rooms</p>
-      </ResultsInfo>
-
-      <RoomGrid>
-        {filteredRooms.map(room => (
-          <RoomCard key={room.id} room={room} />
+      <div className="rooms-grid">
+        {rooms.map(room => (
+          <div key={room.id} className="room-card">
+            <div className="room-image">
+              <img 
+                src={`https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80`} 
+                alt={room.name}
+              />
+            </div>
+            <div className="room-info">
+              <h3>{room.name}</h3>
+              <p className="room-price">${room.price} / night</p>
+              <p className="room-description">{room.description}</p>
+              <ul className="room-amenities">
+                {room.amenities.map((amenity, index) => (
+                  <li key={index}>✓ {amenity}</li>
+                ))}
+              </ul>
+              <Link to="/booking" className="book-button">Book Now</Link>
+            </div>
+          </div>
         ))}
-      </RoomGrid>
-
-      {filteredRooms.length === 0 && (
-        <div className="no-results">
-          <h3>No rooms match your criteria</h3>
-          <p>Try adjusting your filters to see more options</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
