@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heaven Woods Hotel - Luxury Accommodation in Gulu City, Uganda</title>
+    <meta name="description" content="Experience luxury at Heaven Woods Hotel in Gulu City, Uganda. Book your stay for unforgettable hospitality and modern amenities.">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <h2>HEAVEN WOODS</h2>
+                <span>Gulu City, Uganda</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#rooms" class="nav-link">Rooms</a></li>
+                <li><a href="#amenities" class="nav-link">Amenities</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#booking" class="nav-link cta-button">Book Now</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Heaven Woods</h1>
+            <p class="hero-subtitle">Luxury Accommodation in the Heart of Gulu City, Uganda</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="cta-primary">Book Your Stay</a>
+                <a href="#rooms" class="cta-secondary">Explore Rooms</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Heaven Woods</h2>
+                <p>Experience Ugandan Hospitality at Its Finest</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Nestled in the vibrant city of Gulu, Heaven Woods offers a perfect blend of modern luxury and authentic Ugandan charm. Our hotel provides a serene escape with world-class amenities, exquisite dining, and unparalleled service that reflects the warm hospitality of Northern Uganda.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Prime Location</h4>
+                            <p>Centrally located in Gulu City with easy access to local attractions</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-heart"></i>
+                            <h4>Cultural Experience</h4>
+                            <p>Immerse yourself in the rich culture of Northern Uganda</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Sustainable Tourism</h4>
+                            <p>Committed to eco-friendly practices and supporting local communities</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Heaven Woods Hotel">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Rooms & Suites</h2>
+                <p>Choose from our selection of beautifully appointed accommodations</p>
+            </div>
+            
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Standard Room">
+                        <div class="room-price">$80 <span>/ night</span></div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Standard Room</h3>
+                        <p>Comfortable and affordable accommodation with all essential amenities</p>
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                            <li><i class="fas fa-snowflake"></i> Air Conditioning</li>
+                            <li><i class="fas fa-tv"></i> Flat-screen TV</li>
+                            <li><i class="fas fa-bath"></i> En-suite Bathroom</li>
+                        </ul>
+                        <button class="book-button" data-room="standard">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Deluxe Room">
+                        <div class="room-price">$120 <span>/ night</span></div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Deluxe Room</h3>
+                        <p>Spacious room with modern amenities and beautiful views</p>
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                            <li><i class="fas fa-snowflake"></i> Air Conditioning</li>
+                            <li><i class="fas fa-tv"></i> Smart TV</li>
+                            <li><i class="fas fa-cocktail"></i> Mini Bar</li>
+                            <li><i class="fas fa-umbrella-beach"></i> Balcony</li>
+                        </ul>
+                        <button class="book-button" data-room="deluxe">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Executive Suite">
+                        <div class="room-price">$200 <span>/ night</span></div>
+                    </div>
+                    <div class="room-info">
+                        <h3>Executive Suite</h3>
+                        <p>Luxurious suite with separate living area and premium amenities</p>
+                        <ul class="room-amenities">
+                            <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                            <li><i class="fas fa-snowflake"></i> Air Conditioning</li>
+                            <li><i class="fas fa-tv"></i> Smart TV</li>
+                            <li><i class="fas fa-cocktail"></i> Mini Bar</li>
+                            <li><i class="fas fa-hot-tub"></i> Jacuzzi</li>
+                            <li><i class="fas fa-couch"></i> Living Area</li>
+                        </ul>
+                        <button class="book-button" data-room="suite">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hotel Amenities</h2>
+                <p>Everything you need for a perfect stay</p>
+            </div>
+            
+            <div class="amenities-grid">
+                <div class="amenity">
+                    <i class="fas fa-swimming-pool"></i>
+                    <h4>Swimming Pool</h4>
+                    <p>Relax in our beautiful outdoor pool</p>
+                </div>
+                <div class="amenity">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Restaurant</h4>
+                    <p>Exquisite dining with local and international cuisine</p>
+                </div>
+                <div class="amenity">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Free WiFi</h4>
+                    <p>High-speed internet throughout the hotel</p>
+                </div>
+                <div class="amenity">
+                    <i class="fas fa-spa"></i>
+                    <h4>Spa & Wellness</h4>
+                    <p>Relaxing treatments and massage therapy</p>
+                </div>
+                <div class="amenity">
+                    <i class="fas fa-dumbbell"></i>
+                    <h4>Fitness Center</h4>
+                    <p>Modern gym equipment for your workout</p>
+                </div>
+                <div class="amenity">
+                    <i class="fas fa-car"></i>
+                    <h4>Free Parking</h4>
+                    <p>Secure parking available for all guests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Photo Gallery</h2>
+                <p>Take a tour of our beautiful hotel</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Hotel Lobby">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Restaurant">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pool Area">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Spa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-form">
+                    <h2>Book Your Stay</h2>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="checkIn">Check-in Date</label>
+                            <input type="date" id="checkIn" name="checkIn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOut">Check-out Date</label>
+                            <input type="date" id="checkOut" name="checkOut" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="adults">Adults</label>
+                                <select id="adults" name="adults">
+                                    <option value="1">1 Adult</option>
+                                    <option value="2" selected>2 Adults</option>
+                                    <option value="3">3 Adults</option>
+                                    <option value="4">4 Adults</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="children">Children</label>
+                                <select id="children" name="children">
+                                    <option value="0" selected>0 Children</option>
+                                    <option value="1">1 Child</option>
+                                    <option value="2">2 Children</option>
+                                    <option value="3">3 Children</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="roomType">Room Type</label>
+                            <select id="roomType" name="roomType">
+                                <option value="standard">Standard Room - $80/night</option>
+                                <option value="deluxe">Deluxe Room - $120/night</option>
+                                <option value="suite">Executive Suite - $200/night</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <button type="submit" class="submit-booking">Complete Booking</button>
+                    </form>
+                </div>
+                
+                <div class="booking-info">
+                    <h3>Why Book With Us?</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Best Price Guarantee</li>
+                        <li><i class="fas fa-check"></i> Free Cancellation</li>
+                        <li><i class="fas fa-check"></i> No Booking Fees</li>
+                        <li><i class="fas fa-check"></i> Instant Confirmation</li>
+                    </ul>
+                    
+                    <div class="contact-info">
+                        <h4>Need Help?</h4>
+                        <p><i class="fas fa-phone"></i> +256 123 456 789</p>
+                        <p><i class="fas fa-envelope"></i> info@heavenwoods.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Plot 123, Gulu City, Uganda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with Heaven Woods Hotel</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Our Information</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Plot 123, Gulu City<br>Northern Uganda</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+256 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@heavenwoods.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>HEAVEN WOODS</h3>
+                    <p>Luxury accommodation in Gulu City, Uganda offering unparalleled hospitality and modern amenities in the heart of Northern Uganda.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Plot 123, Gulu City, Uganda</p>
+                    <p><i class="fas fa-phone"></i> +256 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> info@heavenwoods.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Heaven Woods Hotel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/script.js"></script>
+</body>
+</html>
